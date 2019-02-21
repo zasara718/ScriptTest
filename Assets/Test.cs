@@ -7,10 +7,19 @@ public class Boss {
 
 	//魔力用の関数
 	public void Magic(int energy) {
-		//残りMPを減らす
-		this.mp -= energy;
-		//減らした数値分の魔力を表示
-		Debug.Log("魔法攻撃をした。残りMPは" + mp);
+
+		for (int m = 10; m >= 0; m --) {
+			if (mp >= 5) {
+				//残りmpを減らす
+				this.mp -= energy;
+				//減らした数値分の魔力を表示
+				Debug.Log("魔法攻撃をした。残りMPは" + mp);	
+
+			} else {
+				//mpが５未満の時
+				Debug.Log("MPが足りないため魔法が使えない");
+			}
+		}
 	}
 }
 
@@ -34,17 +43,8 @@ public class Test : MonoBehaviour {
 		}
 
 		//Bossクラスの変数を宣言してインスタンスを代入
-		Boss lastboss = new Boss();
-		
-		//魔法を使う処理を繰り返す
-		for (int mp = 53; mp >= 0; mp-=5) {
-			if (mp >= 5) {
-				//魔法攻撃用の関数を呼び出す
+		Boss lastboss = new Boss(); {
 				lastboss.Magic(5);
-			} else {
-				//mpが５未満の時
-				Debug.Log("MPが足りないため魔法が使えない");
-			}
 		}
 		
 	}
